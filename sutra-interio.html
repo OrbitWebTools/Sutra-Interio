@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Sutra Interio — Luxury Interior Design, Kolkata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ─── TOKENS ─────────────────────────────────────────────── */
+  :root {
+    --linen:       #F7F4EF;
+    --linen-deep:  #EDE8DF;
+    --ink:         #1A1A18;
+    --ink-soft:    #3A3A38;
+    --grey:        #EBEBEA;
+    --grey-mid:    #BDBCBA;
+    --gold:        #C4A97D;
+    --gold-light:  #D9C4A3;
+    --olive:       #7A8B5C;
+    --olive-pale:  #9BAA7C;
+
+    --ff-serif:    'Playfair Display', Georgia, serif;
+    --ff-sans:     'DM Sans', system-ui, sans-serif;
+
+    --ease:        cubic-bezier(.25,.46,.45,.94);
+    --transition:  0.4s var(--ease);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--linen);
+    color: var(--ink);
+    font-family: var(--ff-sans);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── UTILITIES ───────────────────────────────────────────── */
+  .container {
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 5rem);
+  }
+
+  .eyebrow {
+    font-family: var(--ff-sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+
+  .serif-display {
+    font-family: var(--ff-serif);
+    font-weight: 400;
+    line-height: 1.12;
+  }
+
+  /* ─── NAV ─────────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    padding: env(safe-area-inset-top, 0) 0 0;
+    mix-blend-mode: normal;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem clamp(1.25rem, 5vw, 5rem);
+    background: rgba(247,244,239,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,169,125,0.18);
+    transition: background var(--transition);
+  }
+
+  .nav-logo {
+    font-family: var(--ff-serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+  }
+
+  .nav-logo span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    position: relative;
+    padding-bottom: 2px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width var(--transition);
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.5rem;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--linen); }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--linen);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--ff-serif);
+    font-size: 2rem;
+    color: var(--ink);
+  }
+  .mobile-close {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    background: none; border: none;
+    font-size: 1.75rem;
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  /* ─── HERO ────────────────────────────────────────────────── */
+  #hero {
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(3rem, 8vw, 8rem) clamp(1.25rem, 5vw, 5rem);
+    padding-right: clamp(2rem, 4vw, 4rem);
+  }
+
+  .hero-headline {
+    font-size: clamp(2.4rem, 4.5vw, 4.25rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.75rem;
+    max-width: 16ch;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    color: var(--ink-soft);
+    max-width: 42ch;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--ff-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2.25rem;
+    background: var(--ink);
+    color: var(--linen);
+    cursor: pointer;
+    border: none;
+    transition: background var(--transition), letter-spacing var(--transition);
+  }
+  .btn-primary:hover {
+    background: var(--gold);
+    letter-spacing: 0.15em;
+  }
+
+  .btn-ghost {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--grey-mid);
+    padding-bottom: 2px;
+    transition: color var(--transition), border-color var(--transition);
+  }
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--linen-deep);
+  }
+
+  .stat-num {
+    font-family: var(--ff-serif);
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--grey-mid);
+    letter-spacing: 0.06em;
+    margin-top: 0.35rem;
+  }
+
+  .hero-image-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 8s ease;
+  }
+
+  #hero:hover .hero-image-wrap img { transform: scale(1.03); }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2rem;
+    background: rgba(247,244,239,0.92);
+    backdrop-filter: blur(8px);
+    padding: 1rem 1.4rem;
+    max-width: 220px;
+  }
+
+  .hero-badge-title {
+    font-family: var(--ff-serif);
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-badge-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* ─── SECTION HEADER ──────────────────────────────────────── */
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+  }
+
+  .section-title {
+    font-size: clamp(1.9rem, 3vw, 3rem);
+    letter-spacing: -0.02em;
+    max-width: 22ch;
+  }
+
+  .section-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--grey-mid);
+    padding-bottom: 2px;
+    white-space: nowrap;
+    transition: color var(--transition);
+  }
+  .section-link:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ─── ABOUT / PHILOSOPHY ──────────────────────────────────── */
+  #philosophy {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--linen);
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: clamp(3rem, 6vw, 7rem);
+    align-items: center;
+  }
+
+  .philosophy-image {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .philosophy-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition);
+  }
+  .philosophy-image:hover img { transform: scale(1.04); }
+
+  .philosophy-accent-bar {
+    position: absolute;
+    top: 2rem; left: -1rem;
+    width: 3px;
+    height: 60px;
+    background: var(--gold);
+  }
+
+  .philosophy-body p {
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    max-width: 48ch;
+  }
+
+  .philosophy-quote {
+    font-family: var(--ff-serif);
+    font-size: clamp(1.3rem, 2vw, 1.75rem);
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.45;
+    margin: 2.5rem 0;
+    padding-left: 1.75rem;
+    border-left: 2px solid var(--gold);
+  }
+
+  .values-row {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .value-item {
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .value-name {
+    font-family: var(--ff-serif);
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+
+  .value-desc {
+    font-size: 0.78rem;
+    color: var(--grey-mid);
+    line-height: 1.6;
+  }
+
+  /* ─── PORTFOLIO ───────────────────────────────────────────── */
+  #portfolio {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--ink);
+  }
+
+  #portfolio .eyebrow { color: var(--gold-light); }
+  #portfolio .section-title { color: var(--linen); }
+  #portfolio .section-link { color: rgba(247,244,239,0.5); border-color: rgba(247,244,239,0.2); }
+  #portfolio .section-link:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .project-card:first-child {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    transition: transform 0.7s var(--ease);
+  }
+
+  .project-card:first-child img { aspect-ratio: 16/7; }
+
+  .project-card:hover img { transform: scale(1.06); }
+
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,26,24,0.85) 0%, transparent 55%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.75rem;
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .project-card:hover .project-overlay { opacity: 1; }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border: 1px solid rgba(196,169,125,0.5);
+    padding: 0.3rem 0.75rem;
+    margin-bottom: 0.75rem;
+    width: fit-content;
+  }
+
+  .project-name {
+    font-family: var(--ff-serif);
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    color: var(--linen);
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-meta {
+    font-size: 0.72rem;
+    color: rgba(247,244,239,0.55);
+    letter-spacing: 0.05em;
+  }
+
+  /* Always-visible label at bottom-left (for mobile) */
+  .project-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.25rem;
+    background: linear-gradient(to top, rgba(26,26,24,0.75) 0%, transparent 100%);
+  }
+
+  .project-label-name {
+    font-family: var(--ff-serif);
+    font-size: 0.9rem;
+    color: var(--linen);
+  }
+
+  /* ─── PRICING ─────────────────────────────────────────────── */
+  #pricing {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--linen-deep);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .pricing-card {
+    background: var(--linen);
+    border: 1px solid var(--linen-deep);
+    padding: clamp(2rem, 3.5vw, 3rem);
+    position: relative;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(26,26,24,0.09);
+  }
+
+  .pricing-card.featured {
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .pricing-card.featured .eyebrow { color: var(--gold); }
+
+  .pricing-feature-tag {
+    position: absolute;
+    top: -1px; right: 2rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0.3rem 0.75rem;
+    font-weight: 500;
+  }
+
+  .pricing-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1.75rem;
+    opacity: 0.7;
+  }
+
+  .pricing-type {
+    font-family: var(--ff-serif);
+    font-size: 1.35rem;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .pricing-card.featured .pricing-type { color: var(--linen); }
+
+  .pricing-rate {
+    font-family: var(--ff-serif);
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .pricing-rate-note {
+    font-size: 0.72rem;
+    color: var(--grey-mid);
+    margin-bottom: 2rem;
+  }
+
+  .pricing-card.featured .pricing-rate-note { color: rgba(235,235,234,0.45); }
+
+  .pricing-divider {
+    height: 1px;
+    background: var(--linen-deep);
+    margin-bottom: 2rem;
+  }
+
+  .pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.1); }
+
+  .pricing-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .pricing-list li {
+    font-size: 0.83rem;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .pricing-card.featured .pricing-list li { color: rgba(235,235,234,0.7); }
+
+  .pricing-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--olive);
+    opacity: 0.6;
+    margin-top: 1px;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%237A8B5C' fill-opacity='0.35'/%3E%3Cpath d='M4.5 8L7 10.5L11.5 6' stroke='%237A8B5C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: cover;
+  }
+
+  .btn-pricing {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+  }
+
+  .btn-pricing:hover { background: var(--ink); color: var(--linen); }
+
+  .pricing-card.featured .btn-pricing {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .pricing-card.featured .btn-pricing:hover {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  /* ─── PROCESS ─────────────────────────────────────────────── */
+  #process {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--linen);
+    overflow: hidden;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .process-grid::before {
+    content: '';
+    position: absolute;
+    top: 2.25rem;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold) 0%, var(--olive-pale) 100%);
+  }
+
+  .process-step {
+    padding: 0 1.5rem;
+    position: relative;
+  }
+
+  .process-step:first-child { padding-left: 0; }
+  .process-step:last-child { padding-right: 0; }
+
+  .process-number {
+    width: 4.5rem;
+    height: 4.5rem;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background: var(--linen);
+    position: relative;
+    z-index: 1;
+  }
+
+  .process-num-text {
+    font-family: var(--ff-serif);
+    font-size: 1.3rem;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .process-phase {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+
+  .process-title {
+    font-family: var(--ff-serif);
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    color: var(--ink);
+    margin-bottom: 0.85rem;
+    line-height: 1.35;
+  }
+
+  .process-desc {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    max-width: 22ch;
+  }
+
+  .process-duration {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    border: 1px solid var(--gold-light);
+    padding: 0.3rem 0.75rem;
+  }
+
+  /* ─── TESTIMONIALS ────────────────────────────────────────── */
+  #testimonials {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--linen-deep);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .testimonial-card {
+    background: var(--linen);
+    padding: clamp(2rem, 3vw, 2.75rem);
+  }
+
+  .testimonial-quote-mark {
+    font-family: var(--ff-serif);
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.3;
+    line-height: 0.5;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text {
+    font-family: var(--ff-serif);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+    background: var(--linen-deep);
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .author-detail {
+    font-size: 0.72rem;
+    color: var(--grey-mid);
+    margin-top: 0.2rem;
+  }
+
+  /* ─── CONTACT ─────────────────────────────────────────────── */
+  #contact {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--ink);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 8rem);
+    align-items: start;
+  }
+
+  .contact-left .eyebrow { color: var(--gold); }
+
+  .contact-left .section-title { color: var(--linen); }
+
+  .contact-tagline {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    color: rgba(235,235,234,0.55);
+    margin-top: 1.5rem;
+    line-height: 1.8;
+    max-width: 40ch;
+  }
+
+  .contact-details {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-detail-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .contact-detail-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(196,169,125,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+
+  .contact-detail-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(235,235,234,0.35);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-detail-value {
+    font-size: 0.88rem;
+    color: rgba(235,235,234,0.8);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(235,235,234,0.45);
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(196,169,125,0.2);
+    color: var(--linen);
+    font-family: var(--ff-sans);
+    font-size: 0.88rem;
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color var(--transition);
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(235,235,234,0.2); }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--gold); }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--ff-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background var(--transition), letter-spacing var(--transition);
+    margin-top: 0.5rem;
+  }
+
+  .btn-submit:hover { background: var(--gold-light); letter-spacing: 0.18em; }
+
+  .whatsapp-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.75rem;
+    color: var(--olive-pale);
+    margin-top: 1rem;
+    border-bottom: 1px solid rgba(155,170,124,0.3);
+    padding-bottom: 2px;
+    width: fit-content;
+    transition: color var(--transition);
+  }
+  .whatsapp-cta:hover { color: var(--olive-pale); opacity: 0.7; }
+
+  /* ─── FOOTER ──────────────────────────────────────────────── */
+  footer {
+    background: #0F0F0E;
+    padding: clamp(3rem, 5vw, 5rem) 0 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  .footer-brand {
+    max-width: 300px;
+  }
+
+  .footer-logo {
+    font-family: var(--ff-serif);
+    font-size: 1.4rem;
+    color: var(--linen);
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo span { color: var(--gold); font-style: italic; }
+
+  .footer-tagline {
+    font-size: 0.82rem;
+    color: rgba(235,235,234,0.35);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 0.85rem;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(196,169,125,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(235,235,234,0.4);
+    font-size: 0.8rem;
+    transition: border-color var(--transition), color var(--transition);
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+  .footer-col h4 {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(235,235,234,0.35);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+
+  .footer-col ul li a {
+    font-size: 0.82rem;
+    color: rgba(235,235,234,0.55);
+    transition: color var(--transition);
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+
+  .footer-award {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(196,169,125,0.15);
+    margin-top: 0.5rem;
+  }
+
+  .award-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .award-text {
+    font-size: 0.72rem;
+    color: rgba(235,235,234,0.4);
+    line-height: 1.5;
+  }
+
+  .award-name {
+    color: rgba(235,235,234,0.65);
+    display: block;
+    font-weight: 400;
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(235,235,234,0.25);
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-legal a {
+    font-size: 0.72rem;
+    color: rgba(235,235,234,0.25);
+    transition: color var(--transition);
+  }
+  .footer-legal a:hover { color: var(--gold); }
+
+  /* ─── FLOATING WHATSAPP ───────────────────────────────────── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: clamp(1.25rem, 3vw, 2rem);
+    right: clamp(1.25rem, 3vw, 2rem);
+    z-index: 50;
+    width: 52px;
+    height: 52px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    transition: transform var(--transition);
+  }
+  .whatsapp-float:hover { transform: scale(1.1); }
+
+  .whatsapp-float svg { width: 26px; height: 26px; fill: white; }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    .project-card:first-child { grid-column: 1 / 3; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+    .process-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .process-grid::before { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .footer-brand { grid-column: 1 / 3; }
+  }
+
+  @media (max-width: 768px) {
+    #hero {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 55vw;
+    }
+
+    .hero-text { padding: 6rem 1.25rem 2rem; }
+    .hero-stats { flex-wrap: wrap; gap: 2rem; }
+    .philosophy-grid { grid-template-columns: 1fr; }
+    .philosophy-image { aspect-ratio: 3/2; }
+    .philosophy-body p { max-width: none; }
+
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .project-card:first-child { grid-column: 1; }
+    .project-overlay { opacity: 1; }
+
+    .testimonials-grid { grid-template-columns: 1fr; }
+
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+
+    .process-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-brand { grid-column: 1; }
+
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer-legal { flex-wrap: wrap; gap: 1rem; }
+    .pricing-grid { max-width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Sutra <span>Interio</span></a>
+    <ul class="nav-links">
+      <li><a href="#philosophy">Studio</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+    <button class="nav-hamburger" onclick="document.querySelector('.mobile-menu').classList.add('open')" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" role="dialog" aria-label="Navigation">
+  <button class="mobile-close" onclick="document.querySelector('.mobile-menu').classList.remove('open')" aria-label="Close menu">×</button>
+  <a href="#philosophy" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Studio</a>
+  <a href="#portfolio" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Portfolio</a>
+  <a href="#pricing" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Pricing</a>
+  <a href="#process" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Process</a>
+  <a href="#contact" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <span class="eyebrow">Luxury Interior Design · Kolkata</span>
+    <h1 class="serif-display hero-headline">
+      Crafting Bespoke <em>Luxury</em> Spaces in Kolkata
+    </h1>
+    <p class="hero-sub">
+      Transforming high-end residences and commercial properties with minimalist elegance — where every detail is an intentional act of craft.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/919830000000?text=Hello%2C%20I%27d%20like%20to%20book%20a%20free%20consultation%20for%20my%20interior%20design%20project." target="_blank" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 14l.9-3.3A5.95 5.95 0 112 8.05 5.9 5.9 0 012 14z" fill="currentColor" opacity=".2"/><path d="M2 14l.9-3.3A5.95 5.95 0 112 8.05 5.9 5.9 0 012 14z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+        Book Free Consultation
+      </a>
+      <a href="#portfolio" class="btn-ghost">
+        View Portfolio
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">150+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div>
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Years in Kolkata</div>
+      </div>
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <img
+      src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=85&auto=format&fit=crop"
+      alt="Luxury living room interior by Sutra Interio"
+      loading="eager"
+    />
+    <div class="hero-badge">
+      <div class="hero-badge-title">Park Street Penthouse, Kolkata</div>
+      <div class="hero-badge-tag">Featured Project · 2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="container">
+    <div class="philosophy-grid">
+      <div class="philosophy-image">
+        <div class="philosophy-accent-bar"></div>
+        <img
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=85&auto=format&fit=crop"
+          alt="Interior design detail — Sutra Interio studio philosophy"
+          loading="lazy"
+        />
+      </div>
+      <div class="philosophy-body">
+        <span class="eyebrow">Our Philosophy</span>
+        <h2 class="serif-display section-title">Where Restraint Becomes the Finest Luxury</h2>
+        <blockquote class="philosophy-quote">
+          "Luxury is not about filling a space. It is about knowing precisely what to leave out."
+        </blockquote>
+        <p>
+          Founded in Kolkata, Sutra Interio was born from a deep respect for Bengal's artistic heritage and a conviction that contemporary luxury lives in precision — in a perfectly weighted proportion, a single material used exactly right, a room that breathes.
+        </p>
+        <p>
+          We work exclusively with clients who understand that the best interiors are felt, not noticed. Every project begins with listening: to your life, your rhythms, the architecture's own voice.
+        </p>
+        <div class="values-row">
+          <div class="value-item">
+            <div class="value-name">Handcrafted Detail</div>
+            <div class="value-desc">Bespoke joinery, stone sourcing, and artisan finishes</div>
+          </div>
+          <div class="value-item">
+            <div class="value-name">Timeless Form</div>
+            <div class="value-desc">Design that outlasts any passing trend</div>
+          </div>
+          <div class="value-item">
+            <div class="value-name">On-Time Delivery</div>
+            <div class="value-desc">Milestone-driven execution with full transparency</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">Selected Works</span>
+        <h2 class="serif-display section-title">Spaces That Have Become Home</h2>
+      </div>
+      <a href="#contact" class="section-link">Commission a Project →</a>
+    </div>
+    <div class="portfolio-grid">
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1400&q=85&auto=format&fit=crop" alt="Park Street Residency Interior" loading="lazy" />
+        <div class="project-overlay">
+          <span class="project-tag">Residential · 3BHK</span>
+          <div class="project-name">Park Street Residency</div>
+          <div class="project-meta">3BHK · 2,400 sq. ft. · Completed 2024</div>
+        </div>
+        <div class="project-label"><div class="project-label-name">Park Street Residency</div></div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=85&auto=format&fit=crop" alt="Alipore Bespoke Villa" loading="lazy" />
+        <div class="project-overlay">
+          <span class="project-tag">Residential · Villa</span>
+          <div class="project-name">Bespoke Villa, Alipore</div>
+          <div class="project-meta">6BHK · 6,800 sq. ft. · Completed 2023</div>
+        </div>
+        <div class="project-label"><div class="project-label-name">Bespoke Villa, Alipore</div></div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85&auto=format&fit=crop" alt="Corporate Office Fit-Out" loading="lazy" />
+        <div class="project-overlay">
+          <span class="project-tag">Commercial · Office</span>
+          <div class="project-name">Rajarhat Tech Campus</div>
+          <div class="project-meta">12,000 sq. ft. · Completed 2024</div>
+        </div>
+        <div class="project-label"><div class="project-label-name">Rajarhat Tech Campus</div></div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=85&auto=format&fit=crop" alt="Modular Kitchen Design" loading="lazy" />
+        <div class="project-overlay">
+          <span class="project-tag">Modular · Kitchen</span>
+          <div class="project-name">Modern Modular Kitchen</div>
+          <div class="project-meta">Ballygunge · Completed 2024</div>
+        </div>
+        <div class="project-label"><div class="project-label-name">Modern Modular Kitchen</div></div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&q=85&auto=format&fit=crop" alt="Boutique Hotel Interior" loading="lazy" />
+        <div class="project-overlay">
+          <span class="project-tag">Hospitality</span>
+          <div class="project-name">Boutique Suites, New Town</div>
+          <div class="project-meta">8 Suites · Completed 2023</div>
+        </div>
+        <div class="project-label"><div class="project-label-name">Boutique Suites, New Town</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">Investment Guide</span>
+        <h2 class="serif-display section-title">Transparent Pricing for Every Vision</h2>
+      </div>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- Card 1 -->
+      <div class="pricing-card">
+        <span class="eyebrow">Most Popular</span>
+        <svg class="pricing-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 32V14L20 8l12 6v18" stroke="#C4A97D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="15" y="22" width="10" height="10" stroke="#C4A97D" stroke-width="1.5"/>
+          <path d="M8 18l12-6 12 6" stroke="#C4A97D" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <div class="pricing-type">Residential Interiors</div>
+        <div style="font-size:0.72rem;color:var(--grey-mid);margin-bottom:0.75rem;">3BHK · Full Home Turnkey</div>
+        <div class="pricing-rate">₹12 – ₹15 Lakhs</div>
+        <div class="pricing-rate-note">Estimated range · GST extra</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-list">
+          <li>Complete turnkey interior execution</li>
+          <li>Custom woodwork & cabinetry with premium laminates</li>
+          <li>Ambient, task & accent lighting design</li>
+          <li>False ceiling & wall panelling</li>
+          <li>Flooring, paint & wallcovering selection</li>
+          <li>3D visualisation before execution</li>
+          <li>Dedicated project manager</li>
+        </ul>
+        <a href="#contact" class="btn-pricing">Get a Custom Quote</a>
+      </div>
+
+      <!-- Card 2 (Featured) -->
+      <div class="pricing-card featured">
+        <div class="pricing-feature-tag">Premium</div>
+        <span class="eyebrow">Commercial Fit-Outs</span>
+        <svg class="pricing-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="10" width="28" height="22" rx="1" stroke="#C4A97D" stroke-width="1.5"/>
+          <path d="M6 17h28M14 10v7M26 10v7" stroke="#C4A97D" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="20" cy="25" r="3" stroke="#C4A97D" stroke-width="1.2"/>
+        </svg>
+        <div class="pricing-type">Commercial & Retail Spaces</div>
+        <div style="font-size:0.72rem;color:rgba(235,235,234,0.35);margin-bottom:0.75rem;">Offices · Retail · Hospitality</div>
+        <div class="pricing-rate">₹1,500 / sq. ft.</div>
+        <div class="pricing-rate-note">Starting rate · varies by spec</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-list">
+          <li>Office layouts & workstation planning</li>
+          <li>Retail interior design & VM concepts</li>
+          <li>Acoustic design & noise management</li>
+          <li>Branded environments & reception lobbies</li>
+          <li>MEP coordination (Electrical, HVAC, IT)</li>
+          <li>Restaurant & café interiors</li>
+          <li>Statutory compliance & safety planning</li>
+        </ul>
+        <a href="#contact" class="btn-pricing">Enquire Now</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="pricing-card">
+        <span class="eyebrow">Modular Solutions</span>
+        <svg class="pricing-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="7" y="14" width="26" height="18" rx="1" stroke="#C4A97D" stroke-width="1.5"/>
+          <path d="M7 22h26M14 14v8M20 14v8M26 14v8" stroke="#C4A97D" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M7 14l3-5h20l3 5" stroke="#C4A97D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="pricing-type">Modular Kitchens & Wardrobes</div>
+        <div style="font-size:0.72rem;color:var(--grey-mid);margin-bottom:0.75rem;">Kitchen · Walk-in · Wardrobe</div>
+        <div class="pricing-rate">From ₹3.5 Lakhs</div>
+        <div class="pricing-rate-note">Per modular unit · size-dependent</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-list">
+          <li>German Hettich / Hafele hardware</li>
+          <li>Moisture-resistant marine-grade boards</li>
+          <li>Soft-close shutters, pull-outs & tandem boxes</li>
+          <li>Quartz / granite / stainless countertops</li>
+          <li>Integrated appliance fit-outs</li>
+          <li>10-year manufacturing warranty</li>
+          <li>Installation within 30 working days</li>
+        </ul>
+        <a href="#contact" class="btn-pricing">Get a Custom Quote</a>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:0.75rem;color:var(--grey-mid);">
+      All estimates are indicative. Final pricing is shared after site assessment and design brief. GST @ 18% applicable.
+    </p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">How We Work</span>
+        <h2 class="serif-display section-title">Four Steps to Your Finished Space</h2>
+      </div>
+    </div>
+    <div class="process-grid">
+
+      <div class="process-step">
+        <div class="process-number">
+          <span class="process-num-text">I</span>
+        </div>
+        <div class="process-phase">Discovery</div>
+        <h3 class="process-title">Consultation & Site Visit</h3>
+        <p class="process-desc">We begin with an in-depth conversation about your lifestyle, preferences, and aspirations. A detailed site survey follows to assess dimensions, light conditions, and structural possibilities.</p>
+        <span class="process-duration">Week 1</span>
+      </div>
+
+      <div class="process-step">
+        <div class="process-number">
+          <span class="process-num-text">II</span>
+        </div>
+        <div class="process-phase">Design</div>
+        <h3 class="process-title">3D Concept Design</h3>
+        <p class="process-desc">Our designers present photorealistic 3D renders, floor plans, and mood boards for your approval. Revisions are made until every corner feels right — nothing goes to execution without your sign-off.</p>
+        <span class="process-duration">Weeks 2 – 4</span>
+      </div>
+
+      <div class="process-step">
+        <div class="process-number">
+          <span class="process-num-text">III</span>
+        </div>
+        <div class="process-phase">Selection</div>
+        <h3 class="process-title">Material Selection</h3>
+        <p class="process-desc">We guide you through curated material, finish, and fixture choices at our design studio and vendor partners. Every material is assessed for quality, longevity, and harmony with the overall design.</p>
+        <span class="process-duration">Weeks 3 – 5</span>
+      </div>
+
+      <div class="process-step">
+        <div class="process-number">
+          <span class="process-num-text">IV</span>
+        </div>
+        <div class="process-phase">Execution</div>
+        <h3 class="process-title">On-Time Handover</h3>
+        <p class="process-desc">Our in-house execution team manages every trade — civil, carpentry, MEP, and finishing — with weekly progress reports. You receive a snagging-free handover with a full warranty dossier.</p>
+        <span class="process-duration">Weeks 6 – 16</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <span class="eyebrow">Client Stories</span>
+    <h2 class="serif-display section-title">Words From the Spaces We've Made</h2>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-text">Sutra Interio transformed our 3BHK on Park Street into something we never imagined possible. The team's attention to detail — from the custom joinery to the lighting calibration — is extraordinary. We receive compliments every single week.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:var(--linen-deep);display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);color:var(--gold);font-size:1.1rem;">A</div>
+          <div>
+            <div class="author-name">Arijit & Pritha Sengupta</div>
+            <div class="author-detail">Park Street Residency · 3BHK Interior</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-text">We handed them a bare shell and they gave us a headquarters that our clients walk into and immediately understand what our brand stands for. On-time, on-budget, and genuinely world-class design thinking applied to a Kolkata context.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:var(--linen-deep);display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);color:var(--gold);font-size:1.1rem;">R</div>
+          <div>
+            <div class="author-name">Riya Agarwal</div>
+            <div class="author-detail">Founder, Agarwal Ventures · Rajarhat Office</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-text">The modular kitchen they designed for our Alipore home has completely redefined how we cook and entertain. The German hardware, the clever storage, the marble finish — it's a room I look forward to using every morning.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:var(--linen-deep);display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);color:var(--gold);font-size:1.1rem;">D</div>
+          <div>
+            <div class="author-name">Devika Bose</div>
+            <div class="author-detail">Alipore Villa · Modular Kitchen</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-text">Working with Sutra Interio felt like working with someone who deeply understood what luxury means — not excess, but exactness. The 3D visualisations alone were more precise than anything we'd seen from Kolkata's design community.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:var(--linen-deep);display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);color:var(--gold);font-size:1.1rem;">S</div>
+          <div>
+            <div class="author-name">Soumyabrata Chakraborty</div>
+            <div class="author-detail">New Town Boutique Suites · Hospitality</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <span class="eyebrow">Start Your Project</span>
+        <h2 class="serif-display section-title" style="color:var(--linen);">
+          Let's Build Something Remarkable
+        </h2>
+        <p class="contact-tagline">
+          Share your vision with us and we'll reach out within 24 hours to schedule your complimentary consultation and site visit.
+        </p>
+        <div class="contact-details">
+          <div class="contact-detail-item">
+            <div class="contact-detail-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5A4.5 4.5 0 0 0 3.5 6c0 3 4.5 8.5 4.5 8.5S12.5 9 12.5 6A4.5 4.5 0 0 0 8 1.5z" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Studio Address</div>
+              <div class="contact-detail-value">12, Lindsay Street, 3rd Floor<br/>Kolkata, West Bengal – 700087</div>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="contact-detail-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 3h12v10H2zM2 3l6 5.5L14 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value">hello@sutrainterio.in</div>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="contact-detail-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3c-.5 0-1 .5-1 1 0 6 5 10 10 10 .5 0 1-.5 1-1v-2.5l-2.5-1L9 11s-2-1-3-2-2-3-2-3l1.5-1.5L4.5 2.5 3 3z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Phone / WhatsApp</div>
+              <div class="contact-detail-value">+91 98300 00000</div>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="contact-detail-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5V8l2.5 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Studio Hours</div>
+              <div class="contact-detail-value">Mon – Sat, 10 AM – 7 PM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="Arjun" />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Sharma" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="arjun@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" placeholder="+91 98300 00000" />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Required</label>
+            <select id="service">
+              <option value="" disabled selected>Select a service</option>
+              <option>Residential Interior (Full Home)</option>
+              <option>Commercial / Office Fit-Out</option>
+              <option>Modular Kitchen</option>
+              <option>Modular Wardrobe</option>
+              <option>Hospitality / Retail Interior</option>
+              <option>Consultation Only</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Project</label>
+            <textarea id="message" placeholder="Approx. area, location in Kolkata, budget range, expected start date..."></textarea>
+          </div>
+          <button class="btn-submit" onclick="handleSubmit(event)">Send Enquiry</button>
+          <a href="https://wa.me/919830000000?text=Hello%2C%20I%27d%20like%20to%20discuss%20my%20interior%20project%20with%20Sutra%20Interio." target="_blank" class="whatsapp-cta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.845L.057 23.882l6.198-1.625A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.826 9.826 0 01-4.98-1.355l-.357-.212-3.68.965.982-3.587-.234-.368A9.82 9.82 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12c0 5.422-4.396 9.818-9.818 9.818z"/></svg>
+            Or chat on WhatsApp directly
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">Sutra <span>Interio</span></div>
+        <p class="footer-tagline">Luxury interior design studio based in Kolkata. Crafting bespoke high-end residential and commercial spaces with restraint, precision, and lasting craft.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Pinterest">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Houzz">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.85 0v12.9L12 9.65l6.15 3.25V24H14.2v-7.75l-2.2-1.15-2.2 1.15V24H5.85V0z"/></svg>
+          </a>
+        </div>
+        <div class="footer-award" style="margin-top:1.5rem;">
+          <div class="award-icon">🏆</div>
+          <div class="award-text">
+            <span class="award-name">Best Luxury Interior Studio</span>
+            Bengal Design Awards 2023 · Kolkata
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="#philosophy">Our Philosophy</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#testimonials">Client Stories</a></li>
+          <li><a href="#contact">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#pricing">Residential Interiors</a></li>
+          <li><a href="#pricing">Commercial Fit-Outs</a></li>
+          <li><a href="#pricing">Modular Kitchens</a></li>
+          <li><a href="#pricing">Modular Wardrobes</a></li>
+          <li><a href="#contact">3D Visualisation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@sutrainterio.in">hello@sutrainterio.in</a></li>
+          <li><a href="tel:+919830000000">+91 98300 00000</a></li>
+          <li><a href="#">12, Lindsay Street, Kolkata</a></li>
+          <li><a href="#contact">Book a Consultation</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Sutra Interio. All rights reserved. Kolkata, West Bengal, India.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919830000000?text=Hello%2C%20I%27m%20interested%20in%20a%20luxury%20interior%20project%20in%20Kolkata." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.845L.057 23.882l6.198-1.625A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.826 9.826 0 01-4.98-1.355l-.357-.212-3.68.965.982-3.587-.234-.368A9.82 9.82 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12c0 5.422-4.396 9.818-9.818 9.818z"/>
+  </svg>
+</a>
+
+<script>
+  // Smooth nav background on scroll
+  window.addEventListener('scroll', () => {
+    document.querySelector('.nav-inner').style.background =
+      window.scrollY > 40 ? 'rgba(247,244,239,0.97)' : 'rgba(247,244,239,0.85)';
+  });
+
+  // Form submission handler
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    const fname = document.getElementById('fname').value;
+    const phone = document.getElementById('phone').value;
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value;
+
+    if (!fname || !phone || !service) {
+      btn.textContent = 'Please fill required fields';
+      btn.style.background = '#8B9068';
+      setTimeout(() => {
+        btn.textContent = 'Send Enquiry';
+        btn.style.background = '';
+      }, 2500);
+      return;
+    }
+
+    // WhatsApp redirect with form data
+    const waMsg = `Hello, I'd like to enquire about *${service}*.\n\nName: ${fname}\nPhone: ${phone}\n${message ? 'Details: ' + message : ''}`;
+    const waUrl = `https://wa.me/919830000000?text=${encodeURIComponent(waMsg)}`;
+    window.open(waUrl, '_blank');
+
+    btn.textContent = 'Enquiry Sent — Check WhatsApp';
+    btn.style.background = 'var(--olive)';
+    setTimeout(() => {
+      btn.textContent = 'Send Enquiry';
+      btn.style.background = '';
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>
